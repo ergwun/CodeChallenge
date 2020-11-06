@@ -1,6 +1,6 @@
 using System;
 
-namespace CodeChallenge
+namespace CodeChallenge.Web
 {
     public class WeatherForecast
     {
