@@ -79,5 +79,22 @@ namespace CodeChallenge.Domain.Tests
             // Assert
             action.Should().Throw<InvalidOperationException>();
         }
+
+        [Fact]
+        public void AssignCustomer_Succeeds_AfterCustomerUnassigned()
+        {
+            // Arrange
+            var sut = new Salesperson("Alice Abraham", new List<Group> { Group.A, Group.B });
+            var customer1 = new Customer("Bob Roberts", false, CarType.None);
+            sut.AssignCustomer(customer1);
+            sut.UnassignCustomer();
+            var customer2 = new Customer("Carol Christmas", false, CarType.None);
+
+            // Act
+            sut.AssignCustomer(customer2);
+
+            // Assert
+            sut.AssignedCustomer.Should().Be(customer2);
+        }
     }
 }

@@ -34,5 +34,16 @@ namespace CodeChallenge.Domain
 
             return this.retryPolicy.Execute(() => HandleImplementation(customer));
         }
+
+        public void UnassignCustomerFromSalesperson(string salesPersonName)
+        {
+            void Implementation(string salesPersonName)
+            {
+                var salesTeam = this.salesTeamRepository.Get();
+                salesTeam.UnassignCustomerFromSalesperson(salesPersonName);
+            }
+
+            retryPolicy.Execute(() => Implementation(salesPersonName));
+        }
     }
 }

@@ -33,5 +33,16 @@ namespace CodeChallenge.Domain
 
             return salesperson;
         }
+
+        public void UnassignCustomerFromSalesperson(string salespersonName)
+        {
+            Salesperson? salesperson = this.Salespeople.SingleOrDefault(sp => sp.Name == salespersonName);
+            if (salesperson == null)
+            {
+                throw new SalespersonNotFoundException($"Salesperson '{salespersonName}' not found.");
+            }
+
+            salesperson.UnassignCustomer();
+        }
     }
 }
