@@ -1,11 +1,8 @@
 ﻿using CodeChallenge.Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace CodeChallenge.Web.Assignments
 {
@@ -51,7 +48,7 @@ namespace CodeChallenge.Web.Assignments
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]AssignmentRequestModel model)
+        public IActionResult Create([FromBody] AssignmentRequestModel model)
         {
             var customer = model.ToCustomer();
             var salesperson = this.service.AssignCustomer(customer);

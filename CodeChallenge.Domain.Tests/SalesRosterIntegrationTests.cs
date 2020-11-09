@@ -1,9 +1,6 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
-using Polly;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace CodeChallenge.Domain.Tests

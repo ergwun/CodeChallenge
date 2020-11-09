@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using Polly;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace CodeChallenge.Domain.Tests
@@ -97,7 +95,7 @@ namespace CodeChallenge.Domain.Tests
 
             public void Save(SalesRoster salesRoster)
             {
-                this.savedSalesRosters.Add(salesRoster);   
+                this.savedSalesRosters.Add(salesRoster);
             }
 
             public IEnumerable<SalesRoster> SavedSalesRosters => this.savedSalesRosters;

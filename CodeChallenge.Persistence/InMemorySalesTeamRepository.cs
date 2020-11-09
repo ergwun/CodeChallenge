@@ -9,7 +9,7 @@ namespace CodeChallenge.Persistence
     public class InMemorySalesRosterRepository : ISalesRosterRepository
     {
         private SalesRoster? salesRoster;
-    
+
         public bool Initialized => this.salesRoster != null;
 
         public SalesRoster Get() => this.salesRoster

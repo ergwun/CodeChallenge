@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CodeChallenge.Domain
 {
@@ -24,7 +23,7 @@ namespace CodeChallenge.Domain
                 throw new InvalidOperationException("No rule for assigning customer could be found.");
             }
 
-            var availableSalespeople = this.Salespeople.Where(sp => sp.Assignment == null)  .Shuffle();
+            var availableSalespeople = this.Salespeople.Where(sp => sp.Assignment == null).Shuffle();
             var salesperson = applicableRule.Apply(availableSalespeople);
             if (salesperson != null)
             {

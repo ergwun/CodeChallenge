@@ -1,14 +1,13 @@
 ﻿using CodeChallenge.Domain;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection.Emit;
 
 namespace CodeChallenge.Web.Assignments
 {
     public class AssignmentRequestModel
     {
         [Required]
-        [MaxLength(70)]        
+        [MaxLength(70)]
         public string CustomerName { get; set; }
 
         [Required]
