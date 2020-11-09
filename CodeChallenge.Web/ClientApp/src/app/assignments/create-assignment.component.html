@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="customerName">Customer name:</label>
+  <input id="customerName" type="text" formControlName="customerName">
+  <div *ngIf="customerName.invalid && (customerName.dirty || customerName.touched || submitClicked)"
+       class="validation-error">
+    <div *ngIf="customerName.errors.required">
+      Customer name is required.
+    </div>
+    <div *ngIf="customerName.errors.maxlength">
+      Customer name must not exceed 70 characters.
+    </div>
+  </div>
+  <label for="speaksGreek">Speaks Greek:</label>
+  <input id="speaksGreek" type="checkbox" formControlName="speaksGreek">
+  <label for="vehicleType">Looking for:</label>
+  <select id="vehicleType" formControlName="carType">
+    <option [ngValue]=null>Any vehicle</option>
+    <option *ngFor="let type of enumCarType | keyvalue" [ngValue]="type.value">{{type.value}}</option>
+  </select>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<div *ngIf="showError" class="alert alert-danger alert-dismissible">
+  <a href="#" [routerLink]="" (click)="dismissError()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Error:</strong> {{errorMessage}}
+</div>

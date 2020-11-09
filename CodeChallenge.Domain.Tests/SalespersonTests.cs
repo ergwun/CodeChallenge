@@ -55,7 +55,7 @@ namespace CodeChallenge.Domain.Tests
         {
             // Arrange
             var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
-            var customer = new Customer("Bob Roberts", false, CarType.None);
+            var customer = new Customer("Bob Roberts", false);
 
             // Act
             sut.AssignCustomer(customer);
@@ -69,9 +69,9 @@ namespace CodeChallenge.Domain.Tests
         {
             // Arrange
             var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
-            var customer1 = new Customer("Bob Roberts", false, CarType.None);
+            var customer1 = new Customer("Bob Roberts", false);
             sut.AssignCustomer(customer1);
-            var customer2 = new Customer("Carol Christmas", false, CarType.None);
+            var customer2 = new Customer("Carol Christmas", false);
 
             // Act
             Action action = () => sut.AssignCustomer(customer2);
@@ -85,10 +85,10 @@ namespace CodeChallenge.Domain.Tests
         {
             // Arrange
             var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
-            var customer1 = new Customer("Bob Roberts", false, CarType.None);
+            var customer1 = new Customer("Bob Roberts", false);
             sut.AssignCustomer(customer1);
             sut.UnassignCustomer();
-            var customer2 = new Customer("Carol Christmas", false, CarType.None);
+            var customer2 = new Customer("Carol Christmas", false);
 
             // Act
             sut.AssignCustomer(customer2);

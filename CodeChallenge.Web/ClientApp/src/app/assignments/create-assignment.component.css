@@ -1,0 +1,40 @@
+.validation-error {
+  color: red;
+}
+
+form {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  grid-gap: 1em;
+  align-items: center;
+}
+
+  form button {
+      grid-column: 1 / span 2;
+  }
+
+  form label {
+    grid-column-start: 1;
+    vertical-align: middle;
+    margin: 0;
+  }
+
+  form input[type='checkbox'] {
+    width: 1em;
+    height: 1em;
+  }
+
+  form * {
+    vertical-align: middle;
+  }
+
+/*div.settings label {
+  text-align: right;
+}
+
+div.settings label:after {
+  content: ":";
+}
+*/

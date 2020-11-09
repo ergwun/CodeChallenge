@@ -8,7 +8,7 @@ namespace CodeChallenge.Web.Assignments
     public class AssignmentRequestModel
     {
         [Required]
-        [MaxLength(1024)]        
+        [MaxLength(70)]        
         public string CustomerName { get; set; }
 
         [Required]

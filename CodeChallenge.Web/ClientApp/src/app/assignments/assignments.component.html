@@ -1,0 +1,28 @@
+<h1 id="tableLabel">Sales Team Management</h1>
+
+<h2>Assign a new customer</h2>
+
+<app-create-assignment [onCreation]="refresh"></app-create-assignment>
+
+<h2>Current assignments</h2>
+
+<p>The following salespeople are currently assigned to customers.</p>
+
+<p *ngIf="!assignments"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="assignments">
+  <thead>
+    <tr>
+      <th>Salesperson</th>
+      <th>Customer</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let assignment of assignments">
+      <td>{{ assignment.salespersonName }}</td>
+      <td>{{ assignment.customerName }}</td>
+      <td><button class="delete" title="Unassign" (click)="delete(assignment.id)">&times;</button></td>
+    </tr>
+  </tbody>
+</table>

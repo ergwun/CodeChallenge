@@ -33,12 +33,61 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\assignment.service.ts" />
+    <None Remove="ClientApp\src\app\assignment.ts" />
+    <None Remove="ClientApp\src\app\car-type.ts" />
+    <None Remove="ClientApp\src\app\customer-details - Copy.ts" />
+    <None Remove="ClientApp\src\app\customer-details.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CodeChallenge.Domain\CodeChallenge.Domain.csproj" />
     <ProjectReference Include="..\CodeChallenge.Persistence\CodeChallenge.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\car-type.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\customer-details - Copy.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\customer-details.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\assignment.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\assignment.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\app\assignment - Copy.js">
+      <DependentUpon>assignment.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\assignment - Copy.js.map">
+      <DependentUpon>assignment.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\customer-details - Copy %282%29.js">
+      <DependentUpon>customer-details.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\customer-details - Copy %282%29.js.map">
+      <DependentUpon>customer-details.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\customer-details - Copy - Copy.js">
+      <DependentUpon>customer-details - Copy.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\customer-details - Copy - Copy.js.map">
+      <DependentUpon>customer-details - Copy.js.map</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\customer-details - Copy.js">
+      <DependentUpon>customer-details.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\customer-details - Copy.js.map">
+      <DependentUpon>customer-details.js.map</DependentUpon>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

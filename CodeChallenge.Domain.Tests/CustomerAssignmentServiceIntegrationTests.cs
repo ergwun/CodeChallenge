@@ -19,7 +19,7 @@ namespace CodeChallenge.Domain.Tests
             var salesRoster = new SalesRoster(salespeople);
             var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
-            var customer = new Customer("Bob", true, CarType.None);
+            var customer = new Customer("Bob", true);
 
             // Act
             var assignedSalesperson = sut.AssignCustomer(customer);
@@ -36,7 +36,7 @@ namespace CodeChallenge.Domain.Tests
             var salesRoster = new SalesRoster(salespeople);
             var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
-            var customer = new Customer("Bob", true, CarType.None);
+            var customer = new Customer("Bob", true);
 
             // Act
             var assignedSalesperson = sut.AssignCustomer(customer);
@@ -54,7 +54,7 @@ namespace CodeChallenge.Domain.Tests
             var salesRoster = new SalesRoster(salespeople);
             var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
-            var customer = new Customer("Bob", true, CarType.None);
+            var customer = new Customer("Bob", true);
 
             // Act
             var assignedSalesperson = sut.AssignCustomer(customer);
@@ -71,7 +71,7 @@ namespace CodeChallenge.Domain.Tests
             var salesRoster = new SalesRoster(salespeople);
             var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
-            var customer = new Customer("Bob", true, CarType.None);
+            var customer = new Customer("Bob", true);
 
             // Act
             var assignedSalesperson = sut.AssignCustomer(customer);
@@ -88,6 +88,8 @@ namespace CodeChallenge.Domain.Tests
             {
                 this.SalesRosterToReturn = salesRosterToReturn;
             }
+
+            public bool Initialized => true;
 
             public SalesRoster Get() => this.SalesRosterToReturn;
 
