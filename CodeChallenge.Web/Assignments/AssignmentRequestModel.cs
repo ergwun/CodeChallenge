@@ -1,4 +1,4 @@
-﻿using CodeChallenge.Domain;
+﻿using CodeChallenge.Domain.Model;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 

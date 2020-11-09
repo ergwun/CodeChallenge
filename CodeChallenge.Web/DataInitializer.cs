@@ -1,4 +1,6 @@
-﻿using CodeChallenge.Domain;
+﻿using CodeChallenge.Domain.Model;
+using CodeChallenge.Domain.Repositories;
+using CodeChallenge.Domain.Services;
 using System.IO;
 
 namespace CodeChallenge.Web

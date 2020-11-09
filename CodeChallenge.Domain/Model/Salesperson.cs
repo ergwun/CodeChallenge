@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Model
 {
     public class Salesperson
     {
         public Salesperson(string name, params Group[] groups)
         {
-            this.Name = name;
-            this.Groups = groups;
+            Name = name;
+            Groups = groups;
         }
 
         public string Name { get; }
@@ -18,21 +18,21 @@ namespace CodeChallenge.Domain
 
         public Assignment? Assignment { get; private set; }
 
-        public bool HasSkills(params Skill[] skills) => skills.All(skill => this.Groups.Any(g => g.HasSkill(skill)));
+        public bool HasSkills(params Skill[] skills) => skills.All(skill => Groups.Any(g => g.HasSkill(skill)));
 
         public void AssignCustomer(Customer customer)
         {
-            if (this.Assignment != null)
+            if (Assignment != null)
             {
                 throw new InvalidOperationException();
             }
 
-            this.Assignment = new Assignment(customer);
+            Assignment = new Assignment(customer);
         }
 
         public void UnassignCustomer()
         {
-            this.Assignment = null;
+            Assignment = null;
         }
     }
 }

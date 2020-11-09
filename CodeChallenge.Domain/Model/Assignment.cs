@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Model
 {
     public class Assignment
     {
         public Assignment(Customer customer)
         {
-            this.Id = Guid.NewGuid();
-            this.Customer = customer;
+            Id = Guid.NewGuid();
+            Customer = customer;
         }
 
         public Guid Id { get; }

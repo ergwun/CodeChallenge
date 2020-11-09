@@ -1,4 +1,7 @@
-﻿using FluentAssertions;
+﻿using CodeChallenge.Domain.Model;
+using CodeChallenge.Domain.Repositories;
+using CodeChallenge.Domain.Services;
+using FluentAssertions;
 using Polly;
 using System.Collections.Generic;
 using System.Linq;

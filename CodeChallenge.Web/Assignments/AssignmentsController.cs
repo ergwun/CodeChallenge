@@ -1,4 +1,5 @@
-﻿using CodeChallenge.Domain;
+﻿using CodeChallenge.Domain.Repositories;
+using CodeChallenge.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;

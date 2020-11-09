@@ -1,4 +1,5 @@
-﻿using CodeChallenge.Domain;
+﻿using CodeChallenge.Domain.Model;
+using CodeChallenge.Domain.Repositories;
 using System;
 
 namespace CodeChallenge.Persistence

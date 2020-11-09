@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using CodeChallenge.Domain.Model;
+using CodeChallenge.Domain.Services;
+using FluentAssertions;
 using System;
 using System.Linq;
 using Xunit;

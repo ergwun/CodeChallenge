@@ -1,3 +1,4 @@
+using CodeChallenge.Domain.Model;
 using FluentAssertions;
 using Xunit;
 

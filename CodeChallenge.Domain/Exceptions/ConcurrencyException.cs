@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Exceptions
 {
     [Serializable]
     public class ConcurrencyException : Exception

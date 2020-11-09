@@ -1,4 +1,6 @@
-﻿namespace CodeChallenge.Domain
+﻿using CodeChallenge.Domain.Model;
+
+namespace CodeChallenge.Domain.Repositories
 {
     public interface ISalesRosterRepository
     {

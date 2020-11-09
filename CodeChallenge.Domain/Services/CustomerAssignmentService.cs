@@ -1,8 +1,10 @@
-﻿using Polly;
+﻿using CodeChallenge.Domain.Model;
+using CodeChallenge.Domain.Repositories;
+using Polly;
 using System;
 using System.Linq;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Services
 {
     public class CustomerAssignmentService
     {
@@ -21,32 +23,32 @@ namespace CodeChallenge.Domain
         {
             Salesperson? HandleImplementation(Customer customer)
             {
-                var salesRoster = this.salesRosterRepository.Get();
+                var salesRoster = salesRosterRepository.Get();
                 var assignedSalesperson = salesRoster.TryAssignCustomer(customer, SalespersonAssigningRuleset.Default);
                 if (assignedSalesperson != null)
                 {
-                    this.salesRosterRepository.Save(salesRoster);
+                    salesRosterRepository.Save(salesRoster);
                 }
 
                 return assignedSalesperson;
             }
 
-            return this.retryPolicy.Execute(() => HandleImplementation(customer));
+            return retryPolicy.Execute(() => HandleImplementation(customer));
         }
 
         public void DeleteAssignment(Guid assignmentId)
         {
             void DeletionImplementation(Guid assignmentId)
             {
-                var salesRoster = this.salesRosterRepository.Get();
+                var salesRoster = salesRosterRepository.Get();
                 salesRoster.DeleteAssignment(assignmentId);
-                this.salesRosterRepository.Save(salesRoster);
+                salesRosterRepository.Save(salesRoster);
             }
 
             retryPolicy.Execute(() => DeletionImplementation(assignmentId));
         }
 
         public Salesperson? GetSalespersonWithAssignment(Guid assignmentId) =>
-            this.salesRosterRepository.Get().Salespeople.SingleOrDefault(sp => sp.Assignment?.Id == assignmentId);
+            salesRosterRepository.Get().Salespeople.SingleOrDefault(sp => sp.Assignment?.Id == assignmentId);
     }
 }

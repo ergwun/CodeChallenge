@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Model
 {
     public static class SalespersonAssigningRuleset
     {

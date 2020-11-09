@@ -1,4 +1,4 @@
-﻿using CodeChallenge.Domain;
+﻿using CodeChallenge.Domain.Model;
 using System;
 
 namespace CodeChallenge.Web.Assignments

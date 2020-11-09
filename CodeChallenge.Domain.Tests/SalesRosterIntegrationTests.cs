@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using CodeChallenge.Domain.Model;
+using FluentAssertions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Xunit;

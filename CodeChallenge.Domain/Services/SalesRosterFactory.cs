@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using CodeChallenge.Domain.Model;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Services
 {
     public class SalesRosterFactory
     {

@@ -1,4 +1,5 @@
-using CodeChallenge.Domain;
+using CodeChallenge.Domain.Repositories;
+using CodeChallenge.Domain.Services;
 using CodeChallenge.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

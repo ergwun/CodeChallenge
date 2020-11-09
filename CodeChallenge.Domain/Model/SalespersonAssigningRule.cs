@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Model
 {
     public class SalespersonAssigningRule
     {
@@ -17,7 +17,7 @@ namespace CodeChallenge.Domain
 
         public bool MatchesCustomer(Customer customer)
         {
-            return this.matchesCustomer(customer);
+            return matchesCustomer(customer);
         }
 
         public Salesperson? Apply(IEnumerable<Salesperson> salespeople)

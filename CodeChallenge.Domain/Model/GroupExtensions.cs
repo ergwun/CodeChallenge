@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 
-namespace CodeChallenge.Domain
+namespace CodeChallenge.Domain.Model
 {
     public static class GroupExtensions
     {

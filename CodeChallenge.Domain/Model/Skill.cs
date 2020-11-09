@@ -1,4 +1,4 @@
-﻿namespace CodeChallenge.Domain
+﻿namespace CodeChallenge.Domain.Model
 {
     public enum Skill
     {
