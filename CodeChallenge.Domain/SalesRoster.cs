@@ -6,9 +6,9 @@ using System.Text;
 
 namespace CodeChallenge.Domain
 {
-    public class SalesTeam
+    public class SalesRoster
     {
-        public SalesTeam(IEnumerable<Salesperson> salespeople)
+        public SalesRoster(IEnumerable<Salesperson> salespeople)
         {
             this.Salespeople = salespeople;
         }
@@ -24,7 +24,7 @@ namespace CodeChallenge.Domain
                 throw new InvalidOperationException("No rule for assigning customer could be found.");
             }
 
-            var availableSalespeople = this.Salespeople.Where(sp => sp.AssignedCustomer == null).Shuffle();
+            var availableSalespeople = this.Salespeople.Where(sp => sp.Assignment == null).Shuffle();
             var salesperson = applicableRule.Apply(availableSalespeople);
             if (salesperson != null)
             {
@@ -34,12 +34,12 @@ namespace CodeChallenge.Domain
             return salesperson;
         }
 
-        public void UnassignCustomerFromSalesperson(string salespersonName)
+        public void DeleteAssignment(Guid assignmentId)
         {
-            Salesperson? salesperson = this.Salespeople.SingleOrDefault(sp => sp.Name == salespersonName);
+            Salesperson? salesperson = this.Salespeople.SingleOrDefault(sp => sp.Assignment?.Id == assignmentId);
             if (salesperson == null)
             {
-                throw new SalespersonNotFoundException($"Salesperson '{salespersonName}' not found.");
+                throw new SalespersonNotFoundException($"Assignment '{assignmentId}' not found.");
             }
 
             salesperson.UnassignCustomer();

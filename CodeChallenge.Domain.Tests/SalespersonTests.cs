@@ -15,7 +15,7 @@ namespace CodeChallenge.Domain.Tests
         public void HasSkill_ReturnsTrue_WhenMembershipGroupHasSingleEnquiredSkill()
         {
             // Arrange
-            var sut = new Salesperson("Alice Abraham", new List<Group> { Group.A });
+            var sut = new Salesperson("Alice Abraham", Group.A);
 
             // Act
             var result = sut.HasSkills(Skill.SpeakGreek);
@@ -28,7 +28,7 @@ namespace CodeChallenge.Domain.Tests
         public void HasSkill_ReturnsTrue_WhenMembershipGroupsHaveAllEnquiredSkills()
         {
             // Arrange
-            var sut = new Salesperson("Alice Abraham", new List<Group> { Group.A, Group.B });
+            var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
 
             // Act
             var result = sut.HasSkills(Skill.SpeakGreek, Skill.GoodWithSportsCars);
@@ -41,7 +41,7 @@ namespace CodeChallenge.Domain.Tests
         public void HasSkill_ReturnsFalse_WhenMembershipGroupsHaveOnlySomeEnquiredSkills()
         {
             // Arrange
-            var sut = new Salesperson("Alice Abraham", new List<Group> { Group.A, Group.B });
+            var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
 
             // Act
             var result = sut.HasSkills(Skill.SpeakGreek, Skill.GoodWithFamilyCars);
@@ -54,21 +54,21 @@ namespace CodeChallenge.Domain.Tests
         public void AssignCustomer_Succeeds_WhenCustomerNotAlreadyAssigned()
         {
             // Arrange
-            var sut = new Salesperson("Alice Abraham", new List<Group> { Group.A, Group.B });
+            var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
             var customer = new Customer("Bob Roberts", false, CarType.None);
 
             // Act
             sut.AssignCustomer(customer);
 
             // Assert
-            sut.AssignedCustomer.Should().Be(customer);
+            sut.Assignment.Should().Be(customer);
         }
 
         [Fact]
         public void AssignCustomer_Throws_WhenCustomerAlreadyAssigned()
         {
             // Arrange
-            var sut = new Salesperson("Alice Abraham", new List<Group> { Group.A, Group.B });
+            var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
             var customer1 = new Customer("Bob Roberts", false, CarType.None);
             sut.AssignCustomer(customer1);
             var customer2 = new Customer("Carol Christmas", false, CarType.None);
@@ -84,7 +84,7 @@ namespace CodeChallenge.Domain.Tests
         public void AssignCustomer_Succeeds_AfterCustomerUnassigned()
         {
             // Arrange
-            var sut = new Salesperson("Alice Abraham", new List<Group> { Group.A, Group.B });
+            var sut = new Salesperson("Alice Abraham", Group.A, Group.B);
             var customer1 = new Customer("Bob Roberts", false, CarType.None);
             sut.AssignCustomer(customer1);
             sut.UnassignCustomer();
@@ -94,7 +94,7 @@ namespace CodeChallenge.Domain.Tests
             sut.AssignCustomer(customer2);
 
             // Assert
-            sut.AssignedCustomer.Should().Be(customer2);
+            sut.Assignment.Should().Be(customer2);
         }
     }
 }

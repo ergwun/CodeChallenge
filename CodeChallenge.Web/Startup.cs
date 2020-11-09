@@ -1,3 +1,5 @@
+using CodeChallenge.Domain;
+using CodeChallenge.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Polly;
 
 namespace CodeChallenge.Web
 {
@@ -26,10 +29,19 @@ namespace CodeChallenge.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSingleton<ISalesRosterRepository, InMemorySalesRosterRepository>();
+            services.AddScoped<CustomerAssignmentService>();
+            services.AddScoped<SalesRosterFactory>();
+            services.AddScoped<DataInitializer>();
+            services.AddSingleton<Policy>(Policy.NoOp());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            DataInitializer dataInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +82,8 @@ namespace CodeChallenge.Web
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            dataInitializer.InitializeData();
         }
     }
 }

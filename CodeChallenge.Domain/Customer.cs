@@ -6,7 +6,7 @@ namespace CodeChallenge.Domain
 {
     public class Customer
     {
-        public Customer(string name, bool speaksGreek, CarType carTypePreference)
+        public Customer(string name, bool speaksGreek, CarType? carTypePreference)
         {
             this.Name = name;
             this.SpeaksGreek = speaksGreek;
@@ -17,6 +17,6 @@ namespace CodeChallenge.Domain
 
         public bool SpeaksGreek { get; }
 
-        public CarType CarTypePreference { get; }
+        public CarType? CarTypePreference { get; }
     }
 }

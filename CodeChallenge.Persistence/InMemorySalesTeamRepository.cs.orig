@@ -8,10 +8,19 @@ namespace CodeChallenge.Persistence
     /// </summary>
     public class InMemorySalesRosterRepository : ISalesRosterRepository
     {
-        private SalesRoster? salesRoster;
+<<<<<<< Updated upstream
+        private SalesTeam salesTeam;
     
-        public bool Initialized => this.salesRoster != null;
+        public InMemorySalesTeamRepository(SalesTeam initialSaleTeam)
+        {
+            this.salesTeam = initialSaleTeam;
+        }
+=======
+        private SalesRoster? salesRoster;
+>>>>>>> Stashed changes
 
+        public bool Initialized => this.salesRoster != null;
+        
         public SalesRoster Get() => this.salesRoster
             ?? throw new InvalidOperationException("Initial sales roster has not been created.");
 

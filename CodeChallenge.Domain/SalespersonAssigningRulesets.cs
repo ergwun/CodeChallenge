@@ -33,11 +33,11 @@ namespace CodeChallenge.Domain
                     salesPeople => salesPeople.FirstOrDefault(sp => sp.HasSkills(Skill.GoodWithFamilyCars)),
                     salesPeople => salesPeople.FirstOrDefault()),
                 new SalespersonAssigningRule(
-                    customer => customer.SpeaksGreek && customer.CarTypePreference == CarType.None,
+                    customer => customer.SpeaksGreek && customer.CarTypePreference == null,
                     salesPeople => salesPeople.FirstOrDefault(sp => sp.HasSkills(Skill.SpeakGreek)),
                     salesPeople => salesPeople.FirstOrDefault()),
                 new SalespersonAssigningRule(
-                    customer => !customer.SpeaksGreek && customer.CarTypePreference == CarType.None,
+                    customer => !customer.SpeaksGreek && customer.CarTypePreference == null,
                     salesPeople => salesPeople.FirstOrDefault()),
                 };
     }

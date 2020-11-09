@@ -6,9 +6,8 @@ namespace CodeChallenge.Domain
 {
     public enum CarType
     {
-        None = 0,
+        SportsCar = 0,
         FamilyCar,
-        SportsCar,
         TradieVehicle
     }
 }

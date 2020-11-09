@@ -14,10 +14,10 @@ namespace CodeChallenge.Domain.Tests
         public void AssignCustomer_ReturnsAssignedSalesperson_WhenSalespersonAvailable()
         {
             // Arrange
-            var salesPerson = new Salesperson("Alice", new List<Group> { Group.A });
+            var salesPerson = new Salesperson("Alice", Group.A);
             var salespeople = new List<Salesperson> { salesPerson };
-            var salesTeam = new SalesTeam(salespeople);
-            var repo = new FakeSalesTeamRepository(salesTeam);
+            var salesRoster = new SalesRoster(salespeople);
+            var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
             var customer = new Customer("Bob", true, CarType.None);
 
@@ -33,8 +33,8 @@ namespace CodeChallenge.Domain.Tests
         {
             // Arrange
             var salespeople = Enumerable.Empty<Salesperson>();
-            var salesTeam = new SalesTeam(salespeople);
-            var repo = new FakeSalesTeamRepository(salesTeam);
+            var salesRoster = new SalesRoster(salespeople);
+            var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
             var customer = new Customer("Bob", true, CarType.None);
 
@@ -46,13 +46,13 @@ namespace CodeChallenge.Domain.Tests
         }
 
         [Fact]
-        public void AssignCustomer_SavesSalesTeam_WhenSalespersonAssigned()
+        public void AssignCustomer_SavesSalesRoster_WhenSalespersonAssigned()
         {
             // Arrange
-            var salesPerson = new Salesperson("Alice", new List<Group> { Group.A });
+            var salesPerson = new Salesperson("Alice", Group.A);
             var salespeople = new List<Salesperson> { salesPerson };
-            var salesTeam = new SalesTeam(salespeople);
-            var repo = new FakeSalesTeamRepository(salesTeam);
+            var salesRoster = new SalesRoster(salespeople);
+            var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
             var customer = new Customer("Bob", true, CarType.None);
 
@@ -60,16 +60,16 @@ namespace CodeChallenge.Domain.Tests
             var assignedSalesperson = sut.AssignCustomer(customer);
 
             // Assert
-            repo.SavedSalesTeams.Count().Should().Be(1);
+            repo.SavedSalesRosters.Count().Should().Be(1);
         }
 
         [Fact]
-        public void AssignCustomer_DoesNotSaveSalesTeam_WhenSalespersonNotAssigned()
+        public void AssignCustomer_DoesNotSaveSalesRoster_WhenSalespersonNotAssigned()
         {
             // Arrange
             var salespeople = Enumerable.Empty<Salesperson>();
-            var salesTeam = new SalesTeam(salespeople);
-            var repo = new FakeSalesTeamRepository(salesTeam);
+            var salesRoster = new SalesRoster(salespeople);
+            var repo = new FakeSalesRosterRepository(salesRoster);
             var sut = new CustomerAssignmentService(repo, Policy.NoOp());
             var customer = new Customer("Bob", true, CarType.None);
 
@@ -77,28 +77,28 @@ namespace CodeChallenge.Domain.Tests
             var assignedSalesperson = sut.AssignCustomer(customer);
 
             // Assert
-            repo.SavedSalesTeams.Count().Should().Be(0);
+            repo.SavedSalesRosters.Count().Should().Be(0);
         }
 
-        private class FakeSalesTeamRepository : ISalesTeamRepository
+        private class FakeSalesRosterRepository : ISalesRosterRepository
         {
-            private List<SalesTeam> savedSalesTeams = new List<SalesTeam>();
+            private List<SalesRoster> savedSalesRosters = new List<SalesRoster>();
 
-            public FakeSalesTeamRepository(SalesTeam salesTeamToReturn)
+            public FakeSalesRosterRepository(SalesRoster salesRosterToReturn)
             {
-                this.SalesTeamToReturn = salesTeamToReturn;
+                this.SalesRosterToReturn = salesRosterToReturn;
             }
 
-            public SalesTeam Get() => this.SalesTeamToReturn;
+            public SalesRoster Get() => this.SalesRosterToReturn;
 
-            public SalesTeam SalesTeamToReturn { get; set; }
+            public SalesRoster SalesRosterToReturn { get; set; }
 
-            public void Save(SalesTeam salesTeam)
+            public void Save(SalesRoster salesRoster)
             {
-                this.savedSalesTeams.Add(salesTeam);   
+                this.savedSalesRosters.Add(salesRoster);   
             }
 
-            public IEnumerable<SalesTeam> SavedSalesTeams => this.savedSalesTeams;
+            public IEnumerable<SalesRoster> SavedSalesRosters => this.savedSalesRosters;
         }
 
     }

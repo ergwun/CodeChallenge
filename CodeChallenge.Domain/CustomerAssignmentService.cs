@@ -1,20 +1,21 @@
 ﻿using Polly;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CodeChallenge.Domain
 {
     public class CustomerAssignmentService
     {
-        private readonly ISalesTeamRepository salesTeamRepository;
+        private readonly ISalesRosterRepository salesRosterRepository;
         private readonly Policy retryPolicy;
 
         public CustomerAssignmentService(
-            ISalesTeamRepository salesTeamRepository,
+            ISalesRosterRepository salesRosterRepository,
             Policy retryPolicy)
         {
-            this.salesTeamRepository = salesTeamRepository;
+            this.salesRosterRepository = salesRosterRepository;
             this.retryPolicy = retryPolicy;
         }
 
@@ -22,11 +23,11 @@ namespace CodeChallenge.Domain
         {
             Salesperson? HandleImplementation(Customer customer)
             {
-                var salesTeam = this.salesTeamRepository.Get();
-                var assignedSalesperson = salesTeam.TryAssignCustomer(customer, SalespersonAssigningRulesets.Default);
+                var salesRoster = this.salesRosterRepository.Get();
+                var assignedSalesperson = salesRoster.TryAssignCustomer(customer, SalespersonAssigningRulesets.Default);
                 if (assignedSalesperson != null)
                 {
-                    this.salesTeamRepository.Save(salesTeam);
+                    this.salesRosterRepository.Save(salesRoster);
                 }
 
                 return assignedSalesperson;
@@ -35,15 +36,19 @@ namespace CodeChallenge.Domain
             return this.retryPolicy.Execute(() => HandleImplementation(customer));
         }
 
-        public void UnassignCustomerFromSalesperson(string salesPersonName)
+        public void DeleteAssignment(Guid assignmentId)
         {
-            void Implementation(string salesPersonName)
+            void DeletionImplementation(Guid assignmentId)
             {
-                var salesTeam = this.salesTeamRepository.Get();
-                salesTeam.UnassignCustomerFromSalesperson(salesPersonName);
+                var salesRoster = this.salesRosterRepository.Get();
+                salesRoster.DeleteAssignment(assignmentId);
+                this.salesRosterRepository.Save(salesRoster);
             }
 
-            retryPolicy.Execute(() => Implementation(salesPersonName));
+            retryPolicy.Execute(() => DeletionImplementation(assignmentId));
         }
+
+        public Salesperson? GetSalespersonWithAssignment(Guid assignmentId) =>
+            this.salesRosterRepository.Get().Salespeople.SingleOrDefault(sp => sp.Assignment?.Id == assignmentId);
     }
 }
