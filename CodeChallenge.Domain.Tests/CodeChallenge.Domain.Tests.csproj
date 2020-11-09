@@ -17,6 +17,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\CodeChallenge.Web\Data\salesperson.json" Link="salesperson.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="morelinq" Version="3.3.2" />

@@ -8,9 +8,9 @@ namespace CodeChallenge.Domain
     public class SalespersonAssigningRule
     {
         private readonly Predicate<Customer> matchesCustomer;
-        private readonly IEnumerable<Func<IEnumerable<Salesperson>, Salesperson?>> selectors;
+        private readonly IEnumerable<Predicate<Salesperson>> selectors;
 
-        public SalespersonAssigningRule(Predicate<Customer> matchesCustomer, params Func<IEnumerable<Salesperson>, Salesperson?>[] selectors)
+        public SalespersonAssigningRule(Predicate<Customer> matchesCustomer, params Predicate<Salesperson>[] selectors)
         {
             this.matchesCustomer = matchesCustomer;
             this.selectors = selectors;
@@ -24,7 +24,7 @@ namespace CodeChallenge.Domain
         public Salesperson? Apply(IEnumerable<Salesperson> salespeople)
         {
             return selectors
-                .Select(selector => selector.Invoke(salespeople))
+                .Select(selector => salespeople.FirstOrDefault(sp => selector.Invoke(sp)))
                 .FirstOrDefault(salesperson => salesperson != null);
         }
     }

@@ -24,7 +24,7 @@ namespace CodeChallenge.Domain
             Salesperson? HandleImplementation(Customer customer)
             {
                 var salesRoster = this.salesRosterRepository.Get();
-                var assignedSalesperson = salesRoster.TryAssignCustomer(customer, SalespersonAssigningRulesets.Default);
+                var assignedSalesperson = salesRoster.TryAssignCustomer(customer, SalespersonAssigningRuleset.Default);
                 if (assignedSalesperson != null)
                 {
                     this.salesRosterRepository.Save(salesRoster);

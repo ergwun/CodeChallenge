@@ -13,9 +13,9 @@ namespace CodeChallenge.Domain.Tests
             // Arrange
             var sut = new SalespersonAssigningRule(
                 customer => customer.SpeaksGreek && customer.CarTypePreference == CarType.SportsCar,
-                salesPeople => salesPeople.FirstOrDefault(sp => sp.HasSkills(Skill.SpeakGreek, Skill.GoodWithSportsCars)),
-                salesPeople => salesPeople.FirstOrDefault(sp => sp.HasSkills(Skill.GoodWithSportsCars)),
-                salesPeople => salesPeople.FirstOrDefault());
+                sp => sp.HasSkills(Skill.SpeakGreek, Skill.GoodWithSportsCars),
+                sp => sp.HasSkills(Skill.GoodWithSportsCars),
+                sp => true);
 
             var customer = new Customer("Alice Abrahams", true, CarType.SportsCar);
 
@@ -32,9 +32,9 @@ namespace CodeChallenge.Domain.Tests
             // Arrange
             var sut = new SalespersonAssigningRule(
                 customer => customer.SpeaksGreek && customer.CarTypePreference == CarType.SportsCar,
-                salesPeople => salesPeople.FirstOrDefault(sp => sp.HasSkills(Skill.SpeakGreek, Skill.GoodWithSportsCars)),
-                salesPeople => salesPeople.FirstOrDefault(sp => sp.HasSkills(Skill.GoodWithSportsCars)),
-                salesPeople => salesPeople.FirstOrDefault());
+                salesperson => salesperson.HasSkills(Skill.SpeakGreek, Skill.GoodWithSportsCars),
+                salesperson => salesperson.HasSkills(Skill.GoodWithSportsCars),
+                salesperson => true);
 
             var customer = new Customer("Alice Abrahams", false, CarType.SportsCar);
 

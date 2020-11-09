@@ -61,7 +61,8 @@ namespace CodeChallenge.Domain.Tests
             sut.AssignCustomer(customer);
 
             // Assert
-            sut.Assignment.Should().Be(customer);
+            sut.Assignment.Should().NotBeNull();
+            sut.Assignment?.Customer.Should().Be(customer);
         }
 
         [Fact]
@@ -94,7 +95,8 @@ namespace CodeChallenge.Domain.Tests
             sut.AssignCustomer(customer2);
 
             // Assert
-            sut.Assignment.Should().Be(customer2);
+            sut.Assignment.Should().NotBeNull();
+            sut.Assignment?.Customer.Should().Be(customer2);
         }
     }
 }

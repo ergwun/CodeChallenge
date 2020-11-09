@@ -53,9 +53,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\car-type.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="ClientApp\src\app\customer-details - Copy.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\customer-details.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

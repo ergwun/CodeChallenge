@@ -8,7 +8,7 @@ using Xunit;
 
 namespace CodeChallenge.Domain.Tests
 {
-    public class CustomerAssignmentServiceIntegrationTests
+    public class CustomerAssignmentServiceTests
     {
         [Fact]
         public void AssignCustomer_ReturnsAssignedSalesperson_WhenSalespersonAvailable()
