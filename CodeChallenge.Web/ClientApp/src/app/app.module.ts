@@ -6,9 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { CreateAssignmentComponent } from './assignments/create-assignment.component';
 
@@ -16,9 +13,6 @@ import { CreateAssignmentComponent } from './assignments/create-assignment.compo
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     AssignmentsComponent,
     CreateAssignmentComponent
   ],
@@ -27,10 +21,7 @@ import { CreateAssignmentComponent } from './assignments/create-assignment.compo
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'assignments', component: AssignmentsComponent },
+      { path: '', component: AssignmentsComponent, pathMatch: 'full' },
     ])
   ],
   providers: [],
