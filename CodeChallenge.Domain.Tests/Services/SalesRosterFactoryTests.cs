@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace CodeChallenge.Domain.Tests
+namespace CodeChallenge.Domain.Tests.Services
 {
     public class SalesRosterFactoryTests
     {

@@ -2,7 +2,7 @@
 using CodeChallenge.Domain.Repositories;
 using System;
 
-namespace CodeChallenge.Persistence
+namespace CodeChallenge.Persistence.Repositories
 {
     /// <summary>
     /// Temporary repository implementation that does not correctly manage concurrency.
@@ -11,9 +11,9 @@ namespace CodeChallenge.Persistence
     {
         private SalesRoster? salesRoster;
 
-        public bool Initialized => this.salesRoster != null;
+        public bool Initialized => salesRoster != null;
 
-        public SalesRoster Get() => this.salesRoster
+        public SalesRoster Get() => salesRoster
             ?? throw new InvalidOperationException("Initial sales roster has not been created.");
 
         public void Save(SalesRoster salesRoster) => this.salesRoster = salesRoster;

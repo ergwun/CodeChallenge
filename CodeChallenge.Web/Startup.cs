@@ -1,6 +1,6 @@
 using CodeChallenge.Domain.Repositories;
 using CodeChallenge.Domain.Services;
-using CodeChallenge.Persistence;
+using CodeChallenge.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;

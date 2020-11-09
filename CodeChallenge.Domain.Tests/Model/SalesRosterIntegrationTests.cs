@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Xunit;
 
-namespace CodeChallenge.Domain.Tests
+namespace CodeChallenge.Domain.Tests.Model
 {
     public class SalesRosterIntegrationTests : IClassFixture<SalespersonDataFixture>
     {
@@ -23,7 +23,7 @@ namespace CodeChallenge.Domain.Tests
             bool speaksGreek, CarType? soughtCarType, string[] acceptableNames)
         {
             // Arrange
-            var salespeople = JsonConvert.DeserializeObject<IEnumerable<Salesperson>>(this.fixture.SalespersonJson);
+            var salespeople = JsonConvert.DeserializeObject<IEnumerable<Salesperson>>(fixture.SalespersonJson);
             var sut = new SalesRoster(salespeople);
             var customer = new Customer("Bob", speaksGreek, soughtCarType);
 

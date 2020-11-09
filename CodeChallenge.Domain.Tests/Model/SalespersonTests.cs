@@ -3,7 +3,7 @@ using FluentAssertions;
 using System;
 using Xunit;
 
-namespace CodeChallenge.Domain.Tests
+namespace CodeChallenge.Domain.Tests.Model
 {
     public class SalespersonTests
     {

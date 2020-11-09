@@ -2,7 +2,7 @@ using CodeChallenge.Domain.Model;
 using FluentAssertions;
 using Xunit;
 
-namespace CodeChallenge.Domain.Tests
+namespace CodeChallenge.Domain.Tests.Model
 {
     public class SalespersonAssigningRuleTests
     {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace CodeChallenge.Domain.Tests
+namespace CodeChallenge.Domain.Tests.Services
 {
     public class CustomerAssignmentServiceTests
     {
@@ -87,21 +87,21 @@ namespace CodeChallenge.Domain.Tests
 
             public FakeSalesRosterRepository(SalesRoster salesRosterToReturn)
             {
-                this.SalesRosterToReturn = salesRosterToReturn;
+                SalesRosterToReturn = salesRosterToReturn;
             }
 
             public bool Initialized => true;
 
-            public SalesRoster Get() => this.SalesRosterToReturn;
+            public SalesRoster Get() => SalesRosterToReturn;
 
             public SalesRoster SalesRosterToReturn { get; set; }
 
             public void Save(SalesRoster salesRoster)
             {
-                this.savedSalesRosters.Add(salesRoster);
+                savedSalesRosters.Add(salesRoster);
             }
 
-            public IEnumerable<SalesRoster> SavedSalesRosters => this.savedSalesRosters;
+            public IEnumerable<SalesRoster> SavedSalesRosters => savedSalesRosters;
         }
 
     }
